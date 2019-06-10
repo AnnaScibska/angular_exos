@@ -1,0 +1,25 @@
+<h3>Passing data to Dumb:</h3>
+<!--passing data from parent to child-->
+<app-dumb [appName]="appName" ></app-dumb>
+
+<!--passing data from parent to child-->
+<app-dumb [appName]="'Dupa'"></app-dumb>
+
+<h3>Passing data from Dumb:</h3>
+<app-emit-on-init (emitNumber)="onEmit($event)"></app-emit-on-init>
+<p>Number from Dumb: {{dumbNumber}}</p>
+<!--passing data from child (emit-on-init) to parent-->
+
+<h3>Event Emit Receiver:</h3>
+<p>Number changing on event emit: {{numberChangedOnEventEmit}}</p>
+<app-event-emitter (changeAndEmit)="onEmitChange($event)"></app-event-emitter> - buttons emitting event
+<!--receiving event from child (event-emitter) -->
+
+<h3>Number from observable</h3>
+<app-observable #myObservable></app-observable>
+<p *ngIf="numberFromSubscription">Number from subscription: {{numberFromSubscription}}</p><br>
+<!--receiving data from subscription (observable) -->
+
+<h3>Routing:</h3>
+<button [routerLink]="['/goto']">Go To</button><br>
+<button [routerLink]="['/posts']">Posts</button>
